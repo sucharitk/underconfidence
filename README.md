@@ -6,7 +6,7 @@
 
 All code and data for reproducing analyses and figures for:
 
-Sucharit Katyal, and Stephen M. Fleming. 2024. “Gender and anxiety reveal distinct computational sources of underconfidence.” PsyArXiv. May 24. 
+Sucharit Katyal and Stephen M. Fleming. 2024. “Gender and anxiety reveal distinct computational sources of underconfidence.” PsyArXiv. May 24. 
 https://psyarxiv.com/qcg92/
 
 
