@@ -17,50 +17,35 @@ https://psyarxiv.com/qcg92/
 Analyses and figure generation was performed in R v4.4.1 in RStudio v2024.04.2 
 (see: _code/r_). For reproducing analyses and figures, step through the following code:
 
-    analysis and figure 2:  analysis/confTime_analysis.R
+    analysis and figure 2:  code/confTime_analysis.R
     
-    figure 3G and 3I:       analysis/confTime_fitBehaviour.R
-    
-    figure 3A–3F:           analysis/mbsAnalyses_model.R
+    figure 3A–3F:           code/confTime_simulateModel.R
 
-NOTE: Before performing analyses for Exp 2, you need to unzip the two zipped .csv files in _data/exp2_
+    figure 3G and 3I:       code/confTime_fitBehaviour.R
+    
+    figure 3H–3J:           code/plot_metaDDM.R
 
   #################### ####################
 
-Model was fitted using Matlab (v 2022b) + Jags toolbox (v 3.4.1) (see _code/matlab_)
+The computational model is available in the _code/meta-ddm-model_ directory
 
-To run the model / reproduce the model analyses, perform the following steps:
+To run the model call the files _code/meta-ddm-model/fit_metaDDM_Exp*.R_ separately for each of Exps 1–4. 
 
-1) Ensure that JAGS (an MCMC language similar to BUGS) is installed on your machine. See here for further details: http://mcmc-jags.sourceforge.net/. Note that there are compatibility issues between matjags (MATLAB interface for JAGS) and newer version of JAGS (e.g., 4.X). You will need to install JAGS 3.4.0 rather than the latest version (https://sourceforge.net/projects/mcmc-jags/files/JAGS/3.x/).
+For Exps 1 and 2, the model was run separately for the perception and memory tasks, which can be chosen by setting the _task2fit_ parameter equal to 1 and 2 respectively.
 
-2) The matlab code to fit the model is available in the script:  _code/matlab/mbsMainScript.m_ 
-The code contains separate cells for fitting Exp 1 and Exp 2. For each Exp, you would need to re-evaluate the cell for each model variant by changing the _modelName_ variable to 'model_N' (where N is between 0-10 for Exp 1 and 0-11 for Exp 2). The model numbers corresponding to the model variants are the same as in the manuscript and are also specfied in the matlab script. Currently, the script specifies to run the model for 2000 iterations that takes a long time to run (>1 hour), but the model should give the same results with fewer iterations (for example, you can use 50 or 100 iterations to speeed up processing, which should run in 5-10 minutes depending on your machine). After each successful run of the model, there will be a plot of the posterior distributions of the relevant model parameters. The fitted model will be returned in a field named _fitZ_ or _fitRegZ_ inside the returned data structure.
+Use _code/meta-ddm-model/fit_metaDDM_recover.R_ to perform model simulation and parameter recovery.
 
-3) After running all the model variants, you can save the model using the following matlab cell (note that this will overwrite the previous model fits). You can then reproduce the model figures from the paper by using the same R script as above: mbsAnalyses_model.R
-   
+Model parameters are plotted using the _code/plot_metaDDM.R_ file.
 
-For running model simulations (and recovery), see script: _code/matlab/mbsSimulateExperiment.m_
+Model fitting functions for Exp 1 & 2 fit continuous confidence ratings while Exp 3 & 4 fit discrete confidence ratings.
 
   #################### #################### #################### 
 ####################
 
-To run the models on your own data with _self-performance estimates_ + _local confidence_ + _accuracy_ [+ _feedback_ (optional)]), use the following function (function help contains all necessary inputs for the model):
+To run the models on your own data, modify one of the fit_metaDDM_Exp* functions by pointing it to your dataset containing trial-by-trial data on subject id, choice, accuracy, choice response times, confidence, and confidence response times.
 
-    code/matlab/model/fit_globalSPE.m
+For help with running the model on your data, contact: ska [@] psy [dot] ku [dot] dk
 
-If you need help with running the model on your data or if you need help customising the model to your dataset, contact: sucharit.katyal [@] gmail [dot] com
-
-  #################### #################### #################### 
-####################
-
-Pre-registration doc for Exp 2 can be found at 
-https://osf.io/2pq6y/
-
-
-  #################### #################### #################### 
-####################
-
-_stimuli_ directory contains javascript stimuli used in Exp 1 and Exp 2
 
   #################### #################### #################### 
   
@@ -68,9 +53,9 @@ _stimuli_ directory contains javascript stimuli used in Exp 1 and Exp 2
 
 This code is being released with a permissive open-source license. Please feel free to use or adapt the code as long as you follow the terms of the license enumerated below. If you use the model in a publication, we ask that you cite the following paper:
 
-Katyal, S., Huys, Q. J., Dolan, R. J., & Fleming, S. M. (2023, May 24). How underconfidence is maintained in anxiety and depression. https://doi.org/10.31234/osf.io/qcg92
 
-Copyright (c) 2023, Sucharit Katyal
+
+Copyright (c) 2024, Sucharit Katyal
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
