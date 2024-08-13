@@ -25,6 +25,8 @@ Analyses and figure generation was performed in R v4.4.1 in RStudio v2024.04.2
     
     figure 3H–3J:           code/plot_metaDDM.R
 
+NOTE: Before performing analyses, please unzip the zipped .csv files _data/Katyal_et_al_2023/mbsExp2_noperfexcl.csv.zip_
+
   #################### ####################
 
 The computational model is available in the _code/meta-ddm-model_ directory
